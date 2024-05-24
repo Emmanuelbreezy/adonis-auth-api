@@ -1,0 +1,16 @@
+version: "3"
+services:
+  postgres_db:
+    container_name: adonis-restapi
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB_NAME}
+    volumes:
+      - pgdata_adonis:/var/lib/postgresql/data # Unique volume name scoped to this service/container
+
+volumes:
+  pgdata_adonis: # Unique volume name scoped to this Docker Compose project
